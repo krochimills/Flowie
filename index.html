@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flow is a freelancer operating system that handles client onboarding, contracts, invoicing, payments, and delivery — all in one place.">
+    <meta property="og:title" content="Flow — Freelancer Operating System">
+    <meta property="og:description" content="Onboard clients, get paid, and deliver workproperty="og:type" content="website">
+    <meta property="og:image" content="/og-image.png">
+    <!-- <link rel="icon" href="/favicon.ico"> without juggling tools."> -->
+    
+    <title>Flowie - Freelancer OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconify Script for Solar Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b; /* Zinc 950 */
+            color: #f4f4f5; /* Zinc 100 */
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(5px, 8px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes flowLine {
+            0% { width: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { width: 100%; opacity: 1; }
+        }
+
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        .animate-enter {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .animate-drift {
+            animation: drift 6s ease-in-out infinite;
+        }
+
+        .animate-flow {
+            animation: flowLine 1.5s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+        /* Utility for icon alignment */
+        iconify-icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-zinc-950/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-white">
+                <iconify-icon icon="solar:infinity-linear" width="24" height="24"></iconify-icon>
+                <span class="text-sm font-semibold tracking-tight">Flowie</span>
+            </div>
+            <a
+                href="https://forms.gle/DKjDExNoM9YFBNAB7"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors"
+                >
+                Get Early Access
+            </a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="relative z-0 pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-white/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        <div class="absolute inset-0 
+            bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),
+                linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)]
+            bg-[size:4rem_4rem]
+            pointer-events-none
+            opacity-40
+            -z-10
+            [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_70%,transparent_100%)]
+            [-webkit-mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_70%,transparent_100%)]
+            "></div>
+        <!-- <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div> -->
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <!-- Beta Tag -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8 animate-enter">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                <span class="text-xs font-medium text-zinc-300">Join the waiting list</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-white mb-8 animate-enter delay-100 leading-[1.1]">
+                Master your <br class="hidden md:block" />
+                <span class="text-zinc-500">workflow.</span>
+            </h1>
+            
+            <!-- <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 animate-enter delay-200 font-light leading-relaxed">
+                Replace scattered tools with one fluid system. Onboard clients, send contracts, invoice, and deliver work—all in one automated workspace.
+            </p> -->
+            <div class="max-w-xl mx-auto mb-10 animate-enter delay-200">
+                <ul class="text-sm text-zinc-400 space-y-2">
+                    <li>• Early access to the full freelancer onboarding OS</li>
+                    <li>• Shape features before public launch</li>
+                    <li>• Locked-in early pricing</li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-enter delay-300">
+                <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSd2hfYDZR1szhKGxkbGnfXDDCiZFslvmM-0o9mHiLmzJ0hfYg/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block px-8 py-4 bg-white text-black text-sm font-semibold rounded-full hover:bg-zinc-200 transition-all transform hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
+                    >
+                    Get Early Access
+                </a>
+                <!-- <button onclick="window.location.href='https://forms.google.com/your-form-link'" class="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm font-medium rounded-full hover:bg-zinc-200 transition-all hover:scale-105">
+                    Join the Early Access List
+                </button> -->
+                <button onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto px-8 py-4 bg-zinc-900 text-white border border-zinc-800 text-sm font-medium rounded-full hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 group">
+                    See the flow
+                    <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform group-hover:translate-y-1"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Problem Section (The Chaos) -->
+    <section class="py-24 border-t border-white/5 relative bg-black/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4">The Fragmentation Trap</h2>
+                <p class="text-base text-zinc-500 max-w-lg mx-auto">You didn't start a business to become a full-time admin. Switching contexts kills your flow.</p>
+            </div>
+
+            <!-- Chaotic Representation -->
+            <div class="relative max-w-5xl mx-auto h-[400px] border border-white/10 rounded-3xl bg-zinc-900/30 backdrop-blur-sm overflow-hidden flex items-center justify-center">
+                
+                <!-- Center: The Freelancer (Stressed) -->
+                <div class="z-20 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                     <iconify-icon icon="solar:user-rounded-bold" width="32" class="text-black"></iconify-icon>
+                </div>
+
+                <!-- Floating Elements (Chaos) -->
+                <div class="absolute top-1/4 left-1/4 p-4 bg-zinc-900 border border-red-500/30 text-red-400 rounded-xl animate-drift shadow-lg" style="animation-delay: 0s;">
+                    <div class="flex items-center gap-3">
+                        <iconify-icon icon="solar:bill-cross-linear" width="20"></iconify-icon>
+                        <span class="text-xs font-medium">Unpaid Invoice #302</span>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-1/3 right-1/4 p-4 bg-zinc-900 border border-blue-500/30 text-blue-400 rounded-xl animate-drift shadow-lg" style="animation-delay: 2s;">
+                    <div class="flex items-center gap-3">
+                        <iconify-icon icon="solar:videocamera-record-linear" width="20"></iconify-icon>
+                        <span class="text-xs font-medium">Zoom link missing</span>
+                    </div>
+                </div>
+
+                <div class="absolute top-1/3 right-1/3 p-4 bg-zinc-900 border border-yellow-500/30 text-yellow-400 rounded-xl animate-drift shadow-lg" style="animation-delay: 1.5s;">
+                    <div class="flex items-center gap-3">
+                        <iconify-icon icon="solar:document-text-linear" width="20"></iconify-icon>
+                        <span class="text-xs font-medium">Contract unsigned</span>
+                    </div>
+                </div>
+
+                 <div class="absolute bottom-1/4 left-1/3 p-4 bg-zinc-900 border border-zinc-700 text-zinc-400 rounded-xl animate-drift shadow-lg" style="animation-delay: 3s;">
+                    <div class="flex items-center gap-3">
+                        <iconify-icon icon="solar:letter-linear" width="20"></iconify-icon>
+                        <span class="text-xs font-medium">Reply to Client A</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Solution Section (The Flow) -->
+    <section id="process" class="py-32 bg-zinc-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-24 text-center">
+                <h2 class="text-3xl md:text-5xl font-semibold tracking-tight mb-6 text-white">One continuous motion.</h2>
+                <p class="text-lg text-zinc-500 max-w-2xl mx-auto">From the first handshake to the final thank you. No tabs, no friction.</p>
+            </div>
+
+            <!-- Stepper -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Connecting Line (Background) -->
+                <div class="absolute top-8 left-0 w-full h-[1px] bg-zinc-800 hidden md:block"></div>
+                <!-- Animated Line -->
+                <div class="absolute top-8 left-0 h-[1px] bg-gradient-to-r from-zinc-950 via-white to-zinc-950 w-full hidden md:block animate-pulse opacity-20"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="group flex flex-col md:items-center text-left md:text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:bg-zinc-800 group-hover:border-zinc-600 transition-all duration-300 relative">
+                             <div class="absolute -top-3 -right-3 w-6 h-6 bg-white text-black text-[10px] font-bold rounded-full flex items-center justify-center border-4 border-zinc-950">1</div>
+                             <iconify-icon icon="solar:users-group-rounded-linear" width="28" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-2">Intake</h3>
+                        <p class="text-sm text-zinc-500 leading-relaxed">Auto-schedule discovery calls and collect requirements upfront.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="group flex flex-col md:items-center text-left md:text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:bg-zinc-800 group-hover:border-zinc-600 transition-all duration-300 relative">
+                            <div class="absolute -top-3 -right-3 w-6 h-6 bg-zinc-800 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-4 border-zinc-950">2</div>
+                            <iconify-icon icon="solar:document-add-linear" width="28" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-2">Proposal</h3>
+                        <p class="text-sm text-zinc-500 leading-relaxed">Send dynamic quotes and contracts. Signed in one click.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="group flex flex-col md:items-center text-left md:text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:bg-zinc-800 group-hover:border-zinc-600 transition-all duration-300 relative">
+                            <div class="absolute -top-3 -right-3 w-6 h-6 bg-zinc-800 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-4 border-zinc-950">3</div>
+                            <iconify-icon icon="solar:card-send-linear" width="28" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-2">Payment</h3>
+                        <p class="text-sm text-zinc-500 leading-relaxed">Automated invoicing. Get paid faster with auto-reminders.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="group flex flex-col md:items-center text-left md:text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:bg-zinc-800 group-hover:border-zinc-600 transition-all duration-300 relative">
+                            <div class="absolute -top-3 -right-3 w-6 h-6 bg-zinc-800 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-4 border-zinc-950">4</div>
+                            <iconify-icon icon="solar:gift-linear" width="28" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-2">Delivery</h3>
+                        <p class="text-sm text-zinc-500 leading-relaxed">Secure file delivery and branded thank-you pages.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Features Section (Grid) -->
+    <section class="py-32 bg-zinc-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Everything you need.<br><span class="text-zinc-600">Nothing you don't.</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1 (Large) -->
+                <div class="md:col-span-2 bg-zinc-900/50 border border-white/5 rounded-3xl p-10 hover:border-white/10 transition-colors duration-300 relative group overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                            <iconify-icon icon="solar:widget-linear" width="24" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Client Portal</h3>
+                        <p class="text-base text-zinc-400 max-w-md">Give your clients a professional home base. They can view project status, sign documents, and pay invoices without emailing you.</p>
+                    </div>
+                    <!-- UI Decoration -->
+                    <div class="absolute bottom-0 right-0 w-1/2 h-2/3 bg-zinc-950 border-t border-l border-white/5 rounded-tl-3xl translate-y-6 translate-x-6 group-hover:translate-y-4 group-hover:translate-x-4 transition-transform duration-500 p-6 opacity-50 grayscale hover:grayscale-0">
+                        <div class="space-y-4">
+                            <div class="h-2 w-20 bg-zinc-800 rounded"></div>
+                            <div class="h-20 w-full bg-zinc-900 border border-white/5 rounded-xl"></div>
+                            <div class="h-20 w-full bg-zinc-900 border border-white/5 rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-zinc-900/50 border border-white/5 rounded-3xl p-10 hover:border-white/10 transition-colors duration-300 group">
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                        <iconify-icon icon="solar:bell-bing-linear" width="24" class="text-white"></iconify-icon>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Automation</h3>
+                    <p class="text-base text-zinc-400">Reminders for unpaid invoices and signed contracts are sent automatically.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-zinc-900/50 border border-white/5 rounded-3xl p-10 hover:border-white/10 transition-colors duration-300 group">
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                        <iconify-icon icon="solar:palette-linear" width="24" class="text-white"></iconify-icon>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Branding</h3>
+                    <p class="text-base text-zinc-400">Every touchpoint is whitelabeled with your logo, colors, and custom domain.</p>
+                </div>
+
+                <!-- Card 4 (Wide) -->
+                <div class="md:col-span-2 bg-zinc-900/50 border border-white/5 rounded-3xl p-10 hover:border-white/10 transition-colors duration-300 relative group overflow-hidden">
+                     <div class="relative z-10">
+                        <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                            <iconify-icon icon="solar:calendar-mark-linear" width="24" class="text-white"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Scheduling & Intake</h3>
+                        <p class="text-base text-zinc-400 max-w-md">Eliminate the back-and-forth. Clients book time and answer your questions before the call even starts.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Value Proposition (Outcomes) -->
+    <section class="py-32 bg-zinc-950 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.2] mb-16">
+                "It used to take 3 hours to onboard a client. Now it takes 3 minutes."
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                    <div class="text-3xl font-semibold text-white mb-2">10h+</div>
+                    <div class="text-sm text-zinc-500 font-medium">Saved per week</div>
+                </div>
+                <div class="p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                    <div class="text-3xl font-semibold text-white mb-2">2x</div>
+                    <div class="text-sm text-zinc-500 font-medium">Faster payments</div>
+                </div>
+                <div class="p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                    <div class="text-3xl font-semibold text-white mb-2">100%</div>
+                    <div class="text-sm text-zinc-500 font-medium">Professional feel</div>
+                </div>
+                <div class="p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                    <div class="text-3xl font-semibold text-white mb-2">0</div>
+                    <div class="text-sm text-zinc-500 font-medium">Admin headaches</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Early Access / Footer -->
+    <footer class="bg-zinc-950 py-32 text-center relative overflow-hidden border-t border-white/5">
+        <!-- Decoration -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)] pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Build your waitlist.<br>Build your business.</h2>
+            <p class="text-lg text-zinc-400 mb-10 max-w-xl mx-auto">Be among the first to experience the system built for the next generation of freelancers.</p>
+            
+            <a 
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd2hfYDZR1szhKGxkbGnfXDDCiZFslvmM-0o9mHiLmzJ0hfYg/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block px-8 py-4 bg-white text-black text-sm font-semibold rounded-full hover:bg-zinc-200 transition-all transform hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
+                >
+                Get Early Access
+            </a> 
+            <p class="mt-8 text-xs text-zinc-600">Limited spots available for beta.</p>
+            <p class="mt-6 text-xs text-zinc-500">
+                After joining, you’ll receive a confirmation email and early access updates.
+            </p>
+        </div>
+
+        <div class="mt-24 pt-8 border-t border-white/5 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-zinc-500 text-xs">
+            <div>&copy; 2026 Flow Inc.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <!-- <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                <a href="#" class="hover:text-white transition-colors">LinkedIn</a> -->
+                <a href="krochimills@gmail.com" class="hover:text-white transition-colors">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animations on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+
+        document.querySelectorAll('section h2, section p, .grid > div, .group').forEach((el) => {
+            el.style.opacity = '0'; // hide initially
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
